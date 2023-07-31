@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-        stage ("Git Version") {
+        stage ("Gits Version") {
             steps {
                 sh 'git version'
             }
