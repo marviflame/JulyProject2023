@@ -3,7 +3,7 @@ pipeline {
     agent any
     stages {
 
-        stage ("Environment Variable") {
+        stage ("Environments Variable") {
             steps {
                 sh 'printenv'
             }
