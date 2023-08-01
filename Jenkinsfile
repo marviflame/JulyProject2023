@@ -9,33 +9,22 @@ pipeline {
             }
         }
 
-        stage ("Gits Version") {
+        stage ("Git Version") {
             steps {
                 sh 'git version'
             }
         }
 
-        stage ("Ansible Version") {
-            steps {
-                sh 'ansible --version'
-            }
-        }
 
         stage ("Maven Version") {
             steps {
                 sh 'mvn -v'
             }
         }
-
-        stage ("Docker Version") {
+        
+        stage ("Java Version"){
             steps {
-                sh 'docker version'
-            }
-        }
-
-        stage ("Docker Version II") {
-            steps {
-                sh 'docker --version'
+                sh 'java --version'
             }
         }
 
