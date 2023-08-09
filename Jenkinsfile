@@ -29,7 +29,7 @@ pipeline {
             }
         }
         
-        stage ("Java Version"){
+        stage ("Javac Version"){
             steps {
                 script {
                    sh 'java --version'
