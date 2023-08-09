@@ -4,38 +4,39 @@ pipeline {
 
     stages {
 
-        stage ("Environment Variable") {
+        stage ("Cleanup Workspace") {
             steps {
-                script {
-                   sh 'printenv'
-                }   
-            }
+                cleanWs()
+            }   
         }
 
-        stage ("Git Version") {
+        stage ("Checkout From SCM") {
             steps {
-                script {
-                   sh 'git version'
-                }   
-            }
+                git branch: 'main', credentialsId: 'marviflame', url: 'https://github.com/marviflame/JulyProject2023.git'
+            }   
         }
 
-
-        stage ("Maven Version") {
+        stage ("Build Application") {
             steps {
-                script {
-                   sh 'mvn -v'
-                }   
-            }
+                sh 'maven clean package'
+            }   
         }
         
-        stage ("Javac Version"){
+       stage ("Test Application") {
+            steps {
+                sh 'mvn test'
+            }   
+        }
+
+        stage ("Sonarqube Analysis") {
             steps {
                 script {
-                   sh 'java --version'
-                }   
+                     withSonarQubeEnv(credentialsId: 'sonar-token') {
+                      sh 'mvn sonar:sonar'  
+                    }
+                }    
             }
-        }
+        }    
 
     }
 }
