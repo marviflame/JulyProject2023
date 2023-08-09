@@ -6,30 +6,34 @@ pipeline {
 
         stage ("Environment Variable") {
             steps {
-                script
+                script {
                    sh 'printenv'
+                }   
             }
         }
 
         stage ("Git Version") {
             steps {
-                script
+                script {
                    sh 'git version'
+                }   
             }
         }
 
 
         stage ("Maven Version") {
             steps {
-                script
+                script {
                    sh 'mvn -v'
+                }   
             }
         }
         
         stage ("Java Version"){
             steps {
-                script
+                script {
                    sh 'java --version'
+                }   
             }
         }
 
