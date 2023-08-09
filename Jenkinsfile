@@ -1,30 +1,35 @@
 pipeline {
 
     agent any
+
     stages {
 
         stage ("Environment Variable") {
             steps {
-                sh 'printenv'
+                script
+                   sh 'printenv'
             }
         }
 
         stage ("Git Version") {
             steps {
-                sh 'git version'
+                script
+                   sh 'git version'
             }
         }
 
 
         stage ("Maven Version") {
             steps {
-                sh 'mvn -v'
+                script
+                   sh 'mvn -v'
             }
         }
         
         stage ("Java Version"){
             steps {
-                sh 'java --version'
+                script
+                   sh 'java --version'
             }
         }
 
